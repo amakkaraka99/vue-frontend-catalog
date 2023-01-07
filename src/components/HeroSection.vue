@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-[#02376b] py-16">
+  <header class="bg-[#02376b] py-16 mt-10">
     <div class="container mx-auto md:flex justify-between px-10">
       <div>
         <h1 class="text-4xl text-white font-bold leading-tight">
@@ -15,11 +15,7 @@
         >
       </div>
       <div>
-        <img
-          src="https://merakiui.com/images/components/Catalogue-pana.svg"
-          alt=""
-          class="w-96 shadow mt-4 md:mt-0"
-        />
+        <img src="../assets/vectors.png" alt="" class="w-96 mt-4 md:mt-0" />
       </div>
     </div>
   </header>

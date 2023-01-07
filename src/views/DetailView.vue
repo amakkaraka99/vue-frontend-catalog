@@ -6,9 +6,11 @@ import { ref, onMounted } from "vue";
 const product = ref([]);
 const route = useRoute();
 const id = route.params.id;
+const loading = ref(true);
 const getProduct = async () => {
   const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
   product.value = response.data;
+  loading.value = false;
 };
 onMounted(getProduct);
 </script>
@@ -18,7 +20,18 @@ onMounted(getProduct);
       Detail Katalog
     </h1>
   </div>
-  <ProductDetail :product="product" />
+  <span>
+    <span v-if="loading">
+      <div class="flex justify-center p-5">
+        <div
+          class="loader ease-linear rounded-full border-4 border-t-4 border-blue-900 h-12 w-12 mb-4"
+        ></div>
+      </div>
+    </span>
+    <span v-else>
+      <ProductDetail :product="product" />
+    </span>
+  </span>
   <!-- {{ product }} -->
 </template>
 <style scoped>

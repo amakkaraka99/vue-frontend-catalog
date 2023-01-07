@@ -1,15 +1,22 @@
 <script setup>
 import axios from "axios";
 import ProductCard from "../components/ProducuetCard.vue";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import HeroSection from "../components/HeroSection.vue";
 const products = ref([]);
+const loading = ref(true);
 const getProducts = async () => {
   const response = await axios.get("https://fakestoreapi.com/products");
   products.value = response.data;
+  loading.value = false;
 };
 onMounted(getProducts);
 const search = ref("");
+const filteredProducts = computed(() => {
+  return products.value.filter((p) => {
+    return p.title.toLowerCase().includes(search.value.toLowerCase());
+  });
+});
 </script>
 
 <template>
@@ -27,13 +34,28 @@ const search = ref("");
           v-model="search"
         />
       </div>
-      <div
-        class="grid sm:grid-cols-2 justify-between :grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-5"
-      >
-        <div v-for="p in products" :key="p.id" class="mb-4">
-          <ProductCard :product="p" />
-        </div>
-      </div>
+      <span>
+        <span v-if="loading">
+          <div class="flex justify-center p-5">
+            <div
+              class="loader ease-linear rounded-full border-4 border-t-4 border-rose-900 h-12 w-12 mb-4"
+            ></div>
+          </div>
+        </span>
+        <span v-else>
+          <div
+            class="grid sm:grid-cols-2 :grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-5"
+          >
+            <div
+              v-for="p in filteredProducts"
+              :key="p.id"
+              class="mb-4 justify-center"
+            >
+              <ProductCard :product="p" />
+            </div>
+          </div>
+        </span>
+      </span>
     </div>
   </section>
 </template>

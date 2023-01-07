@@ -3,7 +3,7 @@ const { product } = defineProps(["product"]);
 </script>
 <template>
   <div
-    class="p-4 rounded-md bg-white shadow-sm hover:shadow-xl h-full text-center"
+    class="p-4 rounded-md bg-white shadow-sm hover:shadow-xl h-full text-center justify-center"
   >
     <img
       :src="product.image"

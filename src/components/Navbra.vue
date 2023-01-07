@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex flex-wrap sticky top-0 items-center justify-between w-full py-0 md:py-0 px-4 text-lg text-white bg-[#002447]"
+    class="flex flex-wrap fixed top-0 z-50 items-center justify-between w-full py-0 md:py-0 px-4 text-lg text-white bg-[#002447]"
   >
     <div>
       <a href="#">
