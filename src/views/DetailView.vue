@@ -15,7 +15,7 @@ const getProduct = async () => {
 onMounted(getProduct);
 </script>
 <template>
-  <div class="py-2 mt-4">
+  <div class="py-2 mt-20">
     <h1 class="font-semibold text-3xl md:text-5xl text-center text-blue-500">
       Detail Katalog
     </h1>
