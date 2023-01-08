@@ -187,7 +187,7 @@ const { product } = defineProps({
 });
 const buyNow = () => {
   window.open(`
-    https://api.whatsapp.com/send?phone=082283919347&text=Halo%20saya%20mau%20beli%20${product.title}%20seharga%20${product.price}
+    https://api.whatsapp.com/send?phone=+6282283919347&text=Halo%20saya%20mau%20beli%20${product.title}%20seharga%20${product.price}
     `);
 };
 </script>
